@@ -259,8 +259,7 @@ setMethod(
 
       message("Exported to:", normalizePath(dirpath))
       invisible(normalizePath(dirpath))
-    }
-    else {
+    } else {
       returnSpatial <- list(
         nodes = nodesSP,
         linksCentroid = linksCentrSP,
@@ -313,8 +312,7 @@ setMethod(
     if (vorBound) {
       message("Extracting voronoi boundaries...")
       vorB <- boundaries(x@voronoi, class = TRUE, asNA = TRUE)
-    }
-    else {
+    } else {
       vorB <- "Not created. Use vorBound=TRUE."
     }
 

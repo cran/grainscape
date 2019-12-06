@@ -1,5 +1,36 @@
 Known issues: https://github.com/achubaty/grainscape/issues
 
+version 0.4.2
+=============
+
+## Dependency changes
+
+* removed unused dependency `hunspell` from Suggests
+
+## Bugfixes
+
+* reduced package tarball size
+
+## New features & enhancements
+
+* none
+
+version 0.4.1
+=============
+
+## Dependency changes
+
+* none
+
+## Bugfixes
+
+* fix error on R-devel exposed by change to `matrix` class
+* fixed error in `theme_grainscape()` example
+
+## New features & enhancements
+
+* added package hexsticker
+
 version 0.4.0
 =============
 
