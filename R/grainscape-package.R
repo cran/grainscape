@@ -1,10 +1,10 @@
-#' Efficient Modelling of Landscape Connectivity, Habitat, and Protected Area Networks
+#' Landscape Connectivity, Habitat, and Protected Area Networks
 #'
 #' @description
 #'
-#' Given a landscape resistance surface, creates grains of connectivity and minimum
-#' planar graph models that can be used to calculate effective distances for
-#' landscape connectivity at multiple scales.
+#' Given a landscape resistance surface, creates minimum planar graph and
+#' grains of connectivity models that can be used to calculate effective
+#' distances for landscape connectivity at multiple scales.
 #'
 #' @details
 #'
@@ -25,13 +25,13 @@
 #' MPG calculations and generalization of the Voronoi tessellation used in GOC models
 #' is based on the routines in SELES software (Fall and Fall, 2001).
 #' Routines also depend on the \code{sp} (Pebesma and Bivand, 2005),
-#' \code{raster} (Hijmans and van Etten, 2011), \code{igraph} (Csardi and Nepusz, 2006),
-#' and optionally \code{rgeos} packages (Bivand and Rundel, 2012).
+#' \pkg{raster} (Hijmans and van Etten, 2011), \pkg{igraph} (Csardi and Nepusz, 2006),
+#' and optionally \pkg{rgeos} packages (Bivand and Rundel, 2012).
 #'
-#' A vignette detailing the use of this package for landscape connectivity modelling is included.
-#' See \code{browseVignettes('grainscape')}.
+#' A paper describing the use of this package for landscape connectivity modelling is
+#' available at \url{https://doi.org/10.1111/2041-210X.13350}.
 #'
-#' A detailed tutorial is available as a vignette.
+#' A detailed tutorial is available as a vignette (see \code{browseVignettes('grainscape')}).
 #'
 #' @import igraph
 #' @import methods
@@ -44,7 +44,7 @@
 #' R package version 0.3-19, \url{https://CRAN.R-project.org/package=rgeos}.
 #'
 #' Csardi, G. and T. Nepusz. (2006). The igraph software package for complex network research.
-#' InterJournal Complex Systems 1695. \url{http://igraph.org}.
+#' InterJournal Complex Systems 1695. \url{https://igraph.org}.
 #'
 #' Fall, A. and J. Fall. (2001). A domain-specific language for models of landscape dynamics.
 #' Ecological Modelling 141:1-18.
