@@ -7,10 +7,10 @@ Description: Given a landscape resistance surface, creates minimum planar graph
     used to calculate effective distances for landscape connectivity at multiple scales.
     Documentation is provided by several vignettes, and a paper
     (Chubaty, Galpern & Doctolero (2020) <doi:10.1111/2041-210X.13350>).
-URL: https://alexchubaty.com/grainscape,
+URL: https://www.alexchubaty.com/grainscape/,
         https://github.com/achubaty/grainscape
-Version: 0.4.3
-Date: 2020-08-31
+Version: 0.4.4
+Date: 2023-04-20
 Authors@R: c(
     person("Paul", "Galpern", email = "pgalpern@gmail.com", role = c("aut", "cph"),
            comment = c(ORCID = "0000-0003-0099-3981")),
@@ -19,27 +19,27 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-7146-8135"))
     )
 License: GPL (>= 2)
-Imports: ggplot2, graphics, grDevices, igraph, methods, sp, raster,
-        Rcpp (>= 0.12.11.4), rgdal, utils
+Imports: ggplot2, graphics, grDevices, igraph, methods, sf, sp, raster,
+        Rcpp (>= 0.12.11.4), utils
 LinkingTo: Rcpp
-Suggests: covr, cowplot, ggthemes, knitr, parallel, rgeos, rmarkdown,
+Suggests: covr, cowplot, ggthemes, knitr, parallel, rmarkdown,
         spelling, testthat
 VignetteBuilder: knitr, rmarkdown
 BugReports: https://github.com/achubaty/grainscape/issues
 ByteCompile: yes
 Collate: 'grainscape-package.R' 'classes.R' 'GOC.R' 'MPG.R'
-        'RcppExports.R' 'grain.R' 'corridor.R' 'deprecated.R'
-        'distance.R' 'export.R' 'extract.R' 'ggGS.R' 'graphdf.R'
+        'RcppExports.R' 'grain.R' 'corridor.R' 'distance.R' 'export.R'
+        'extract.R' 'ggGS.R' 'grainscape-deprecated.R' 'graphdf.R'
         'habitatConnectivityEngine.R' 'patchFilter.R' 'plot.R'
         'point.R' 'theme_grainscape.R' 'threshold.R' 'zzz.R'
 Encoding: UTF-8
 Language: en-CA
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
 NeedsCompilation: yes
-Packaged: 2020-08-31 23:29:34 UTC; achubaty
+Packaged: 2023-04-20 02:43:09 UTC; achubaty
 Author: Paul Galpern [aut, cph] (<https://orcid.org/0000-0003-0099-3981>),
   Sam Doctolero [aut],
   Alex M Chubaty [aut, cre] (<https://orcid.org/0000-0001-7146-8135>)
 Maintainer: Alex M Chubaty <alex.chubaty@gmail.com>
 Repository: CRAN
-Date/Publication: 2020-09-01 08:10:04 UTC
+Date/Publication: 2023-04-20 08:40:02 UTC
