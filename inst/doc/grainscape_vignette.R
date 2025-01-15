@@ -26,7 +26,7 @@ theme_visualRef <- theme_grainscape() +
   theme(panel.background = element_rect(colour = "black", size = 0.25, fill = NA))
 theme_set(theme_visualRef)
 
-## ---- results="hide"----------------------------------------------------------
+## ----results="hide"-----------------------------------------------------------
 patchy <- raster(system.file("extdata/patchy.asc", package = "grainscape"))
 
 ## ----figure_03, fig.cap='\\label{fig:patchycost}Input raster resistance surface to create the minimum planar graph (MPG). Features with value of 1 (red) will be the patches in the network. A river (light blue) has the highest resistance in this example.'----
@@ -43,7 +43,10 @@ ggplot() +
     data = patchyCost_df,
     aes(x = x, y = y, fill = value)
   ) +
-  scale_fill_brewer(type = "div", palette = "Paired", guide = "legend") +
+  scale_fill_brewer(
+    type = "qual", palette = "Paired",
+    direction = -1, guide = "legend"
+  ) +
   guides(fill = guide_legend(title = "Resistance")) +
   theme_grainscape() +
   theme(legend.position = "right")
@@ -94,22 +97,26 @@ ggplot(scalarAnalysis$summary, aes(x = maxLink, y = nComponents)) +
   theme(axis.title = element_text())
 
 ## ----figure_06, fig.cap="\\label{fig:thresholdedgraph}The thresholded MPG depicted with a link length of 250 resistance units. An organism that can disperse a maximum of 250 resistance units would experience this landscape as 6 connected regions in the depicted spatial configuration. Note that the plotting has been customized to emphasize which patches are connected. This was done by plotting links with less than the threshold length from the centroids of patches", warning=FALSE----
+links_df <- ggGS(patchyMPG, "links") |>
+  dplyr::filter(lcpPerimWeight >= 250)
+
 ggplot() +
   geom_raster(
     data = ggGS(patchyMPG, "patchId"),
-    aes(x = x, y = y, fill = value > 0)
+    mapping = aes(x = x, y = y, fill = value > 0)
   ) +
   scale_fill_manual(values = "grey") +
   geom_segment(
-    data = ggGS(patchyMPG, "links"),
-    aes(
+    data = links_df,
+    mapping = aes(
       x = x1, y = y1, xend = x2, yend = y2,
-      colour = lcpPerimWeight >= 250
+      colour = as.factor(lcpPerimWeight)
     )
   ) +
-  scale_colour_manual(values = c("forestgreen", NA)) +
+  scale_colour_manual(values = rep("forestgreen", nrow(links_df))) +
   geom_point(
-    data = ggGS(patchyMPG, "nodes"), aes(x = x, y = y),
+    data = ggGS(patchyMPG, "nodes"),
+    mapping = aes(x = x, y = y),
     colour = "darkgreen"
   )
 
@@ -131,7 +138,7 @@ patchPlusVoronoi[patchyMPG@patchId] <- 0
 ggplot() +
   geom_raster(data = ggGS(patchPlusVoronoi), aes(x = x, y = y, fill = value))
 
-## ---- results="hide"----------------------------------------------------------
+## ----results="hide"-----------------------------------------------------------
 patchyGOC <- GOC(patchyMPG, nThresh = 10)
 
 ## ----figure_08, fig.cap='\\label{fig:gocthresh}A visualization of a GOC model. In this case it is the 6th scale or threshold extracted. Voronoi polygons imply regions that are functionally-connected at the given movement threshold.'----
@@ -193,7 +200,7 @@ res2[] <- floor(runif(ncell(res2)) * 10 + 1)
 ## raster made previously which represents the points only
 mpg <- MPG(res2, patchPts)
 
-## Plot the result using the quick 'mgplot' visualization
+## Plot the result using the quick 'mpgPlot' visualization
 ## setting and add labels (dodging them by 3 to the upper-right)
 ## This demonstrates the non-linear paths.
 figure10 <- plot(mpg, quick = "mpgPlot", theme = FALSE) +
